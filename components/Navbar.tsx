@@ -18,19 +18,19 @@ export default function Navbar() {
 
           {/* Navigation */}
           <div className="flex items-center gap-8">
-            <a href="#" className="font-medium text-secondary hover:opacity-80 transition-opacity">
+            <a href="#" className="font-medium text-muted hover:opacity-80 transition-opacity">
               Dashboard
             </a>
 
-            <a href="#" className="font-medium text-secondary hover:opacity-80 transition-opacity">
+            <a href="#" className="font-medium text-muted hover:opacity-80 transition-opacity">
               Users
             </a>
 
-            <a href="#" className="font-medium text-secondary hover:opacity-80 transition-opacity">
+            <a href="#" className="font-medium text-muted hover:opacity-80 transition-opacity">
               Settings
             </a>
 
-            <a href="#" className="font-medium text-secondary hover:opacity-80 transition-opacity">
+            <a href="#" className="font-medium text-muted hover:opacity-80 transition-opacity">
               About
             </a>
           </div>
@@ -55,19 +55,19 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="mt-6 flex flex-col gap-4 border-t border-border pt-6 md:hidden">
-            <a href="#" className="font-medium text-secondary hover:opacity-80 transition-opacity">
+            <a href="#" className="font-medium text-muted hover:opacity-80 transition-opacity">
               Dashboard
             </a>
 
-            <a href="#" className="font-medium text-secondary hover:opacity-80 transition-opacity">
+            <a href="#" className="font-medium text-muted hover:opacity-80 transition-opacity">
               Users
             </a>
 
-            <a href="#" className="font-medium text-secondary hover:opacity-80 transition-opacity">
+            <a href="#" className="font-medium text-muted hover:opacity-80 transition-opacity">
               Settings
             </a>
 
-            <a href="#" className="font-medium text-secondary hover:opacity-80 transition-opacity">
+            <a href="#" className="font-medium text-muted hover:opacity-80 transition-opacity">
               About
             </a>
 

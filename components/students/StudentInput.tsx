@@ -1,30 +1,9 @@
 "use client";
 
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
-const studentSchema = z.object({
-  firstName: z.string().trim().min(2, "First name must contain at least 2 characters.").max(12, "First name cannot exceed 12 characters."),
-
-  lastName: z.string().trim().min(2, "Last name must contain at least 2 characters.").max(12, "Last name cannot exceed 12 characters."),
-
-  email: z.email("Please enter a valid email address.").trim(),
-
-  grade: z.number().int("Grade must be a whole number.").min(1, "Grade must be between 1 and 10.").max(10, "Grade must be between 1 and 10."),
-
-  section: z.enum(["A", "B", "C", "D"], {
-    message: "Please select a valid section.",
-  }),
-
-  rollNumber: z
-    .number()
-    .int("Roll number must be a whole number.")
-    .min(1, "Roll number must be between 1 and 50.")
-    .max(50, "Roll number must be between 1 and 50."),
-});
-
-type StudentFormData = z.infer<typeof studentSchema>;
+import { addStudent } from "@/actions/studentActions";
+import { StudentFormData, studentSchema } from "@/lib/validation/student";
 
 const inputClass = "w-full rounded-md border border-gray-300 px-3 py-2 text-sm transition-colors focus:border-black focus:outline-none";
 
@@ -44,13 +23,18 @@ export default function StudentInput() {
     },
   });
 
-  const onSubmit = (data: StudentFormData) => {
+  const onSubmit = async (data: StudentFormData) => {
     console.log(data);
+    const id = toast.loading("Adding student...");
+
+    try {
+      await addStudent(data);
     reset();
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="mx-auto flex max-w-md flex-col gap-4 p-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="mx-auto flex max-w-lg flex-col gap-4 px-8 py-12 bg-base rounded-xl border border-border shadow-lg">
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="mb-1 block text-sm font-medium">First Name</label>

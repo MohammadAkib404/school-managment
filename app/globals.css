@@ -8,13 +8,13 @@
   /* Text */
   --font-heading: var(--font-poppins);
   --color-primary: hsl(0 0% 8%);
-  --color-secondary: hsl(0 0% 40%);
+  --color-muted: hsl(0 0% 40%);
 
   /* UI */
   --color-border: hsl(0 0% 88%);
 
   /* Brand */
-  --color-brand: hsl(190 100% 37%);
+  --color-brand: hsl(252 76% 56%);
 
   /* Feedback */
   --color-success: hsl(142 71% 45%);
