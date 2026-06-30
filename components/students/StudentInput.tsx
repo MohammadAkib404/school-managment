@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { addStudent } from "@/actions/studentActions";
 import { StudentFormData, studentSchema } from "@/lib/validation/student";
+import { toast } from "sonner";
 
 const inputClass = "w-full rounded-md border border-gray-300 px-3 py-2 text-sm transition-colors focus:border-black focus:outline-none";
 
@@ -24,12 +25,20 @@ export default function StudentInput() {
   });
 
   const onSubmit = async (data: StudentFormData) => {
-    console.log(data);
+    reset();
+
     const id = toast.loading("Adding student...");
 
     try {
       await addStudent(data);
-    reset();
+
+      toast.success("Student added successfully.", {
+        id,
+      });
+    } catch {
+      toast.error("Unable to add student.", {
+        id,
+      });
     }
   };
 
